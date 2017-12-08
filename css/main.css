@@ -1,0 +1,88 @@
+body {
+    margin: 0;
+    background-color: #272822;
+}
+
+
+#sidebar-wrapper {
+    background-color: #49483E;
+    width: 50px;
+    height: 100vh;
+    position: fixed;
+}
+#sidebar-buttons {
+    margin-top: 15px;
+    width: 50px;
+}
+.sidebar-button {
+    margin: 10px 0;
+    font-size: 2em;
+    color: #b8b8b2;
+    width: 100%;
+    text-align: center;
+}
+.sidebar-button:hover,
+.sidebar-button.selected {
+    color: #F8F8F2;
+}
+
+
+#tabs {
+    margin-left: 50px;
+    height: 100%;
+    padding: 0px;
+    clear: both;
+    border: none;
+}
+#tabs.ui-tabs-nav {
+    background: transparent; 
+    border-width: 0px 0px 1px 0px; 
+    -moz-border-radius: 0px; 
+    -webkit-border-radius: 0px; 
+    border-radius: 0px;
+}
+#tabs.ui-tabs-panel { 
+    margin: 0em 0.2em 0.2em 0.2em; 
+}
+#tabs.ui-corner-all, .ui-tabs-tab.ui-corner-top,
+.ui-tabs-nav.ui-corner-all {
+    border-radius: 0;
+}
+.ui-tabs-nav {
+    height: 41px;
+}
+.ui-tabs .ui-tabs-panel {
+    height: calc(100vh - 83px);
+    clear: both;
+    padding: 0;
+}
+li.ui-tabs-tab.ui-tab .ui-tabs-anchor {
+    background-color: #49483E;
+}
+li.ui-tabs-tab.ui-tab.ui-tabs-active .ui-tabs-anchor {
+    background-color: #2F3129;
+}
+.ui-widget-header {
+    background: none;
+    border: none;
+    background-color: #49483E;
+}
+.ui-state-default a, .ui-state-default a:link {
+    color: #b8b8b2;
+}
+.ui-state-active a, .ui-state-active a:link {
+    color: #F8F8F0;
+}
+
+#markdown-wrapper {
+    display: none;
+}
+
+
+#editor-wrapper, #editor {
+    height: 100%;
+}
+
+.clear-both {
+    clear: both;
+}

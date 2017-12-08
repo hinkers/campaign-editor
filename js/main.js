@@ -12,10 +12,13 @@ function createWindow () {
 
     // and load the index.html of the app.
     win.loadURL(url.format({
-        pathname: path.join(__dirname, 'index.html'),
+        pathname: path.join('index.html'),
         protocol: 'file:',
         slashes: true
     }))
+
+    // Open the debugger while developing (it's just too handy)
+    win.webContents.openDevTools()
 
     // Emitted when the window is closed.
     win.on('closed', () => {
@@ -24,7 +27,7 @@ function createWindow () {
         // when you should delete the corresponding element.
         win = null
     })
- }
+}
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
