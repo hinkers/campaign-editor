@@ -1,0 +1,5 @@
+{
+    "name"    : "DnD Campaign Editor",
+    "version" : "0.1.0",
+    "main"    : "main.js"
+}
