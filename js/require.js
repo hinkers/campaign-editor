@@ -1,2 +1,2 @@
 // Import jQuery and jQuery-UI
-$ = jQuery = require('jQuery');
+window.$ = window.jQuery = require('jquery');
