@@ -1,5 +1,9 @@
 $(function() {
 
+    $('#head #name').click(function() {
+        location.reload();
+    });
+
     // Function for working out stat modifiers
     var modifier = function(stat) {
         n = Math.floor(stat / 2) - 5;
@@ -47,8 +51,12 @@ $(function() {
 
     // Get json file
     $.getJSON("assets/dnd/5e-SRD-Monsters.json", function(json) {
-        var monster = json[Math.floor(Math.random() * json.length)];
+        //var monster = json[Math.floor(Math.random() * json.length)];
+        var monster = json[8];
         console.log(monster);
+
+        // Title
+        document.title = monster['name'] + " - " + document.title;
 
         // Head
         $('#head #name').text(monster['name']);
@@ -62,8 +70,6 @@ $(function() {
         $('#combat-stats #hit_points').text(monster['hit_points']);
         $('#combat-stats #hit_dice').text(monster['hit_dice']);
         $('#combat-stats #speed').text(monster['speed']);
-        $('#combat-stats #challenge_rating').text(monster['challenge_rating']);
-        $('#combat-stats #xp').text(xp[monster['challenge_rating']]);
 
         // Raw stats
         $('#raw-stats #strength').text(monster['strength']);
@@ -78,5 +84,61 @@ $(function() {
         $('#raw-stats #wisdom_mod').text(modifier(monster['wisdom']));
         $('#raw-stats #charisma').text(monster['charisma']);
         $('#raw-stats #charisma_mod').text(modifier(monster['charisma']));
+
+        // Traits
+        var saves = {
+            'Str': 'strength_save',
+            'Dex': 'dexterity_save',
+            'Con': 'consitution_save',
+            'Int': 'intelligence_save',
+            'Wis': 'wisdom_save',
+            'Cha': 'charisma_save'
+        };
+        var saveStr = [];
+        $.each(saves, function(attr, save) {
+            if (save in monster) {
+                saveStr.push(attr + " " + (monster[save] < 0 ? "" : "+") + monster[save]);
+            }
+        });
+        if (saveStr.length) {
+            $('#traits #saving_throws').text(saveStr.join(", "));
+        } else {
+            $('#traits #saving_throws').closest('p').hide();
+        }
+
+        if (monster['damage_immunities']) {
+            $('#traits #damage_immunities').text(monster['damage_immunities']);
+        } else {
+            $('#traits #damage_immunities').closest('p').hide();
+        }
+        
+        if (monster['damage_resistances']) {
+            $('#traits #damage_resistances').text(monster['damage_resistances']);
+        } else {
+            $('#traits #damage_resistances').closest('p').hide();
+        }
+
+        if (monster['damage_vulnerabilities']) {
+            $('#traits #damage_vulnerabilities').text(monster['damage_vulnerabilities']);
+        } else {
+            $('#traits #damage_vulnerabilities').closest('p').hide();
+        }
+
+        if (monster['condition_immunities']) {
+            $('#traits #condition_immunities').text(monster['condition_immunities']);
+        } else {
+            $('#traits #condition_immunities').closest('p').hide();
+        }
+
+        $('#traits #senses').text(monster['senses']);
+
+        if (monster['languages'] == "") {
+            $('#traits #languages').text("None");
+        } else {
+            $('#traits #languages').text(monster['languages']);
+        }
+
+        $('#traits #challenge_rating').text(monster['challenge_rating'] + " (" + xp[monster['challenge_rating']] + " XP)");
+
     });
 });
