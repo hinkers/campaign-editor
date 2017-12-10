@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Monster Card</title>
+
+        <link rel="stylesheet" href="css/monster_card.css">
+
+        <script src="js/require.js"></script>
+        <script src="js/monster_card.js"></script>
+    </head>
+
+    <body>
+        
+        <div id="card">
+
+            <div id="head">
+                <h1 id="name"></h1>
+                <em id="">
+                    <span id="size"></span>
+                    <span id="type"></span>
+                    <span id="subtype"></span>
+                    <span id="alignment"></span>
+                </em>
+                <hr>
+            </div>
+
+            <div id="combat-stats">
+                <p>
+                    <strong>AC:</strong>
+                    <span id="armor_class"></span>
+                </p>
+                <p>
+                    <strong>HP:</strong>
+                    <span id="hit_points"></span>
+                    (<span id="hit_dice"></span>)
+                </p>
+                <p>
+                    <strong>Speed:</strong>
+                    <span id="speed"></span>
+                </p>
+                <p>
+                    <strong>CR:</strong>
+                    <span id="challenge_rating"></span>
+                    (<span id="xp"></span>)
+                </p>
+                <hr>
+            </div>
+
+            <div id="raw-stats">
+                <span class="stat-block">
+                    <strong>STR</strong>
+                    <span id="strength"></span>
+                    <span id="strength_mod"></span>
+                </span>
+                <span class="stat-block">
+                    <strong>DEX</strong>
+                    <span id="dexterity"></span>
+                    <span id="dexterity_mod"></span>
+                </span>
+                <span class="stat-block">
+                    <strong>CON</strong>
+                    <span id="constitution"></span>
+                    <span id="constitution_mod"></span>
+                </span>
+                <span class="stat-block">
+                    <strong>INT</strong>
+                    <span id="intelligence"></span>
+                    <span id="intelligence_mod"></span>
+                </span>
+                <span class="stat-block">
+                    <strong>WIS</strong>
+                    <span id="wisdom"></span>
+                    <span id="wisdom_mod"></span>
+                </span>
+                <span class="stat-block">
+                    <strong>CHA</strong>
+                    <span id="charisma"></span>
+                    <span id="charisma_mod"></span>
+                </span>
+            </div>
+            <hr>
+        </div>
+
+    </body>
+
+</html>
