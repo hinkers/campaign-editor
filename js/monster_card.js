@@ -142,13 +142,14 @@ $(function() {
 
         // Special abilities
         if ('special_abilities' in monster) {
-            var  specialAbilityContainer = $('#special_abilities #special_abilities_clone').clone().prop('id', '').children('.closed').hide();
+            var  specialAbilityContainer = $('#special_abilities #special_abilities_clone').clone();
+            specialAbilityContainer.prop('id', '').children('.closed').hide();
 
             $.each(monster['special_abilities'], function(i, ability) {
                 var abilityConatiner = specialAbilityContainer.clone();
 
                 abilityConatiner.children('strong').text(ability['name']);
-                abilityConatiner.children('p').text(ability['description']);
+                abilityConatiner.children('p').text(ability['desc']);
 
                 $('#special_abilities').append(abilityConatiner);
             });
@@ -156,4 +157,13 @@ $(function() {
         $('#special_abilities #special_abilities_clone').remove();
 
     });
+
+    // Collapse or expand
+    $('.name_toggle').click(function() {
+        console.log(this);
+        //$(this).hide();
+        //$(this).closest('p').toggle();
+        //$(this).closest('i').show();
+    });
+    console.log(1);
 });
