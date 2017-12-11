@@ -17,11 +17,15 @@ h1, p {
 
 h1 {
     font-family: 'Roboto Slab', serif;
+    color: #810000;
 }
 
 strong {
     font-family: 'Lato-Black', sans-serif;
     color: #810000;
+}
+#special_abilities strong {
+    color: initial;
 }
 
 .stat-block {

@@ -111,7 +111,7 @@ $(function() {
         } else {
             $('#traits #damage_immunities').closest('p').hide();
         }
-        
+
         if (monster['damage_resistances']) {
             $('#traits #damage_resistances').text(monster['damage_resistances']);
         } else {
@@ -139,6 +139,21 @@ $(function() {
         }
 
         $('#traits #challenge_rating').text(monster['challenge_rating'] + " (" + xp[monster['challenge_rating']] + " XP)");
+
+        // Special abilities
+        if ('special_abilities' in monster) {
+            var  specialAbilityContainer = $('#special_abilities #special_abilities_clone').clone().prop('id', '').children('.closed').hide();
+
+            $.each(monster['special_abilities'], function(i, ability) {
+                var abilityConatiner = specialAbilityContainer.clone();
+
+                abilityConatiner.children('strong').text(ability['name']);
+                abilityConatiner.children('p').text(ability['description']);
+
+                $('#special_abilities').append(abilityConatiner);
+            });
+        }
+        $('#special_abilities #special_abilities_clone').remove();
 
     });
 });
