@@ -1,5 +1,7 @@
+// On document ready
 $(function() {
 
+    // TODO: Remove me
     $('#head #name').click(function() {
         location.reload();
     });
@@ -106,6 +108,38 @@ $(function() {
             $('#traits #saving_throws').closest('p').hide();
         }
 
+        var skills = [
+            'Athletics',
+            'Acrobatics',
+            'Sleight of Hand',
+            'Stealth',
+            'Arcana',
+            'History',
+            'Investigation',
+            'Nature',
+            'Religion',
+            'Animal Handling',
+            'Insight',
+            'Medicine',
+            'Perception',
+            'Survival',
+            'Deception',
+            'Intimidation',
+            'Performance',
+            'Persuasion'
+        ]
+        var skillStr = [];
+        $.each(skills, function(i, skill) {
+            if (skill.toLowerCase() in monster) {
+                skillStr.push(skill + " " + (monster[skill.toLowerCase()] < 0 ? "" : "+") + monster[skill.toLowerCase()]);
+            }
+        });
+        if (skillStr.length) {
+            $('#traits #skills').text(skillStr.join(", "));
+        } else {
+            $('#traits #skills').closest('p').hide();
+        }
+
         if (monster['damage_immunities']) {
             $('#traits #damage_immunities').text(monster['damage_immunities']);
         } else {
@@ -156,14 +190,79 @@ $(function() {
         }
         $('#special_abilities #special_abilities_clone').remove();
 
-    });
+        // Actions
+        if ('actions' in monster) {
+            var  actionsContainer = $('#actions #actions_clone').clone();
+            actionsContainer.prop('id', '').children('.closed').hide();
 
-    // Collapse or expand
-    $('.name_toggle').click(function() {
-        console.log(this);
-        //$(this).hide();
-        //$(this).closest('p').toggle();
-        //$(this).closest('i').show();
+            $.each(monster['actions'], function(i, action) {
+                var actionContainer = actionsContainer.clone();
+
+                actionContainer.children('strong.action_toggle').text(action['name']);
+                actionContainer.children('p').text(action['desc']);
+
+                if ('damage_dice' in action) {
+                    var img = $('<img src="images/d20.png" />');
+                    actionContainer.children('span.attack').append(img).append((action['attack_bonus'] < 0 ? " " : " +") + action['attack_bonus']);
+                    actionContainer.children('span.attack').data('roll', '1d20' + (action['attack_bonus'] < 0 ? "" : "+") + action['attack_bonus']);
+
+                    var diceSize = action['damage_dice'].substr(action['damage_dice'].indexOf("d") + 1);
+                    var img = $('<img src="images/d' + diceSize + '.png" />');
+                    actionContainer.children('span.damage').append(action['damage_dice'].substr(0, action['damage_dice'].indexOf("d")) + " ").append(img);
+                    actionContainer.children('span.damage').data('roll', action['damage_dice']);
+
+                    if ('damage_bonus' in action) {
+                        actionContainer.children('span.damage').append((action['damage_bonus'] < 0 ? " " : " +") + action['damage_bonus']);
+                        actionContainer.children('span.damage').data('roll',  actionContainer.children('span.damage').data('roll') + (action['damage_bonus'] < 0 ? "" : "+") + action['damage_bonus']);
+                    }
+
+                } else {
+                    actionContainer.children('.roll_dice, .attack, .damage, br').each(function() {
+                        $(this).addClass('hidden').hide();
+                    });
+                }
+
+
+                $('#actions').append(actionContainer);
+            });
+        }
+        $('#actions #actions_clone').remove();
+
+        // Collapse or expand actions
+        $('.action_toggle').click(function() {
+            var parent = $(this).closest('div');
+            $(parent).children('svg').each(function(key, i) {
+                $(i).toggle();
+            });
+            $(parent).children('p, strong:not(.action_toggle):not(.hidden), span:not(.hidden), br:not(.hidden)').each(function(key, i) {
+                $(i).slideToggle();
+            });
+        });
+
+        // Roll dice
+        $('.roll_dice').click(function() {
+            var roll = $(this);
+            if (roll.is('strong')) {
+                roll = $(this).next('span');
+            }
+
+            var copyElement = $('<input value="/r ' + roll.data('roll') + '">');
+            $('body').append(copyElement);
+            copyElement.select();
+            document.execCommand("copy");
+            copyElement.remove();
+
+            // TODO: Show copied tooltip
+        });
+
+        // Fix width if there is a scrollbar
+        if ($("body").height() > $(window).height()) {
+            console.log(require('electron').remote.getCurrentWindow());
+            require('electron').remote.getCurrentWindow().setSize(383, 515);
+        } else {
+            console.log($("body").height());
+            console.log($(window).height());
+        }
+
     });
-    console.log(1);
 });

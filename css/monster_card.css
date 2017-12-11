@@ -10,22 +10,35 @@ body {
     font-size: small;
 }
 
-h1, p {
+h1, h2, p {
     padding: 0;
     margin: 0;
 }
 
-h1 {
+h1, h2 {
     font-family: 'Roboto Slab', serif;
     color: #810000;
+}
+
+h2 {
+    padding-top: 5px;
+}
+
+img {
+    width: 12px;
+    height: 12px;
 }
 
 strong {
     font-family: 'Lato-Black', sans-serif;
     color: #810000;
 }
-#special_abilities strong {
+#special_abilities strong, #actions strong {
     color: initial;
+}
+
+#actions strong.roll_dice {
+    color: #810000;
 }
 
 .stat-block {
@@ -38,6 +51,15 @@ strong {
 .stat-block strong {
     width: 100%;
     display: block;
+}
+
+.roll_dice, .action_toggle {
+    cursor: pointer;
+}
+#actions strong.roll_dice:hover,
+#actions strong.action_toggle:hover,
+#special_abilities strong.action_toggle:hover {
+    color: #862626;
 }
 
 hr {
