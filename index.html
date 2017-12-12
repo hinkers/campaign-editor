@@ -18,43 +18,51 @@
 
         <!-- TODO: Work out how to actually import this -->
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-        
+
         <script src="assets/ace/src-min/ace.js"></script>
         <script src="js/index.js"></script>
     </head>
 
     <body>
 
-        <div id="sidebar-wrapper">
-            <div id="sidebar">
-                <div id="sidebar-buttons">
-                    <div class="sidebar-button" title="Files"><i class="fas fa-file-alt"></i></div>
-                    <div class="sidebar-button" title="Search"><i class="fas fa-search"></i></div>
-                    <div id="monsters-button" class="sidebar-button" title="NPCs &amp; Monsters"><i class="fab fa-optin-monster"></i></div>
-                </div>
-            </div>
-        </div>
+        <div id="body-wrapper">
 
-        <div id="tabs">
-            <ul>
-                <li><a href="#tab-1">One</a></li>
-                <li><a href="#tab-2">Two</a></li>
-                <li><a href="#tab-3">Three</a></li>
-            </ul>
-            <div id="tab-1">
-                <div id="markdown-wrapper">
-                    <div id="markdown">#Markdown</div>
-                </div>
-                <div id="editor-wrapper">
-                    <div id="editor"></div>
+            <div id="sidebar-wrapper">
+                <div id="sidebar">
+                    <div id="sidebar-buttons">
+                        <div class="sidebar-button" title="Files"><i class="fas fa-file-alt"></i></div>
+                        <div class="sidebar-button" title="Search"><i class="fas fa-search"></i></div>
+                        <div id="monsters-button" class="sidebar-button" title="NPCs &amp; Monsters"><i class="fab fa-optin-monster"></i></div>
+                    </div>
                 </div>
             </div>
-            <div id="tab-2">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+
+            <div id="tabs">
+                <ul>
+                    <li><a href="#tab-1">Tab 1</a></li>
+                    <li><a href="#tab-2">Tab 2</a></li>
+                    <li><a href="#tab-3">Tab 3</a></li>
+                </ul>
+                <div id="tab-1">
+                    <div id="markdown-toggle">
+                        <i class="fas fa-eye"></i>
+                        <i class="fas fa-eye-slash"></i>
+                    </div>
+                    <div id="markdown-wrapper">
+                        <div id="markdown">#Markdown</div>
+                    </div>
+                    <div id="editor-wrapper">
+                        <div id="editor"></div>
+                    </div>
+                </div>
+                <div id="tab-2">
+                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                </div>
+                <div id="tab-3">
+                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                </div>
             </div>
-            <div id="tab-3">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-            </div>
+
         </div>
 
     </body>

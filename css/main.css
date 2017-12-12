@@ -3,18 +3,23 @@ body {
     background-color: #272822;
     color: #F8F8F2;
     font-family: 'Inconsolata', monospace;
-    /*overflow: hidden;*/
 }
 
-::-webkit-scrollbar { 
-    display: none; 
+::-webkit-scrollbar {
+    display: none;
+}
+
+#body-wrapper {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
 }
 
 
 #sidebar-wrapper {
     background-color: #3498db;
     width: 50px;
-    height: 100vh;
+    height: 100%;
     position: fixed;
 }
 #sidebar-buttons {
@@ -33,24 +38,23 @@ body {
     color: #F8F8F2;
 }
 
-
 #tabs {
     margin: 0;
     margin-left: 50px;
-    height: 100vh;
+    height: 100%;
     padding: 0px;
     clear: both;
     border: none;
 }
 #tabs.ui-tabs-nav {
-    background: transparent; 
-    border-width: 0px 0px 1px 0px; 
-    -moz-border-radius: 0px; 
-    -webkit-border-radius: 0px; 
+    background: transparent;
+    border-width: 0px 0px 1px 0px;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
     border-radius: 0px;
 }
-#tabs.ui-tabs-panel { 
-    margin: 0em 0.2em 0.2em 0.2em; 
+#tabs.ui-tabs-panel {
+    margin: 0em 0.2em 0.2em 0.2em;
 }
 #tabs.ui-corner-all, .ui-tabs-tab.ui-corner-top,
 .ui-tabs-nav.ui-corner-all {
@@ -103,6 +107,11 @@ html .ui-button.ui-state-disabled:active {
     font-family: 'Inconsolata', monospace;
 }
 
+#markdown-toggle {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+}
 
 #markdown-wrapper {
     display: none;

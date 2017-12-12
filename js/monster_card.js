@@ -174,6 +174,7 @@ $(function() {
 
         $('#traits #challenge_rating').text(monster['challenge_rating'] + " (" + xp[monster['challenge_rating']] + " XP)");
 
+
         // Special abilities
         if ('special_abilities' in monster) {
             var  specialAbilityContainer = $('#special_abilities #special_abilities_clone').clone();
@@ -189,6 +190,7 @@ $(function() {
             });
         }
         $('#special_abilities #special_abilities_clone').remove();
+
 
         // Actions
         if ('actions' in monster) {
@@ -222,11 +224,49 @@ $(function() {
                     });
                 }
 
+                $('#actions').append(actionContainer);
+            });
+        }
+        $('#actions #actions_clone').remove();
+
+
+        // Legendary Actions
+        if ('legendary_actions' in monster) {
+            var  actionsContainer = $('#legendary_actions #legendary_actions_clone').clone();
+            actionsContainer.prop('id', '').children('.closed').hide();
+
+            $.each(monster['legendary_actions'], function(i, action) {
+                var actionContainer = actionsContainer.clone();
+
+                actionContainer.children('strong.action_toggle').text(action['name']);
+                actionContainer.children('p').text(action['desc']);
+
+                if ('damage_dice' in action) {
+                    var img = $('<img src="images/d20.png" />');
+                    actionContainer.children('span.attack').append(img).append((action['attack_bonus'] < 0 ? " " : " +") + action['attack_bonus']);
+                    actionContainer.children('span.attack').data('roll', '1d20' + (action['attack_bonus'] < 0 ? "" : "+") + action['attack_bonus']);
+
+                    var diceSize = action['damage_dice'].substr(action['damage_dice'].indexOf("d") + 1);
+                    var img = $('<img src="images/d' + diceSize + '.png" />');
+                    actionContainer.children('span.damage').append(action['damage_dice'].substr(0, action['damage_dice'].indexOf("d")) + " ").append(img);
+                    actionContainer.children('span.damage').data('roll', action['damage_dice']);
+
+                    if ('damage_bonus' in action) {
+                        actionContainer.children('span.damage').append((action['damage_bonus'] < 0 ? " " : " +") + action['damage_bonus']);
+                        actionContainer.children('span.damage').data('roll',  actionContainer.children('span.damage').data('roll') + (action['damage_bonus'] < 0 ? "" : "+") + action['damage_bonus']);
+                    }
+
+                } else {
+                    actionContainer.children('.roll_dice, .attack, .damage, br').each(function() {
+                        $(this).addClass('hidden').hide();
+                    });
+                }
 
                 $('#actions').append(actionContainer);
             });
         }
         $('#actions #actions_clone').remove();
+
 
         // Collapse or expand actions
         $('.action_toggle').click(function() {
@@ -238,6 +278,7 @@ $(function() {
                 $(i).slideToggle();
             });
         });
+
 
         // Roll dice
         $('.roll_dice').click(function() {
@@ -255,13 +296,11 @@ $(function() {
             // TODO: Show copied tooltip
         });
 
+
         // Fix width if there is a scrollbar
         if ($("body").height() > $(window).height()) {
             console.log(require('electron').remote.getCurrentWindow());
             require('electron').remote.getCurrentWindow().setSize(383, 515);
-        } else {
-            console.log($("body").height());
-            console.log($(window).height());
         }
 
     });
