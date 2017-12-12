@@ -6,6 +6,14 @@ $(function () {
 		active: 0
 	});
 
+	// Eyes
+	$('#markdown-toggle').click(function() {
+		$(this).children('.preview').each(function() {
+			$(this).toggle();
+		});
+		$('#markdown-wrapper').toggle();
+		$('#editor-wrapper').toggle();
+	});
 
 	// Monsters test
 	$('#monsters-button').click(function () {
@@ -20,6 +28,8 @@ $(function () {
 			resizable: false,
 			fullscreenable: false
 		});
+
+		win.webContents.send('monsterNumber', 8);
 
 		win.webContents.on('did-finish-load', () => {
 			win.setMenu(null);

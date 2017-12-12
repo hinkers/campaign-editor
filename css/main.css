@@ -5,6 +5,7 @@ body {
     font-family: 'Inconsolata', monospace;
 }
 
+#body-wrapper::-webkit-scrollbar,
 ::-webkit-scrollbar {
     display: none;
 }
@@ -109,8 +110,9 @@ html .ui-button.ui-state-disabled:active {
 
 #markdown-toggle {
     position: fixed;
-    top: 100px;
-    right: 20px;
+    z-index: 100;
+    top: 45px;
+    right: 15px;
 }
 
 #markdown-wrapper {
@@ -119,5 +121,5 @@ html .ui-button.ui-state-disabled:active {
 
 
 #editor-wrapper, #editor {
-    height: 100%;
+    height: calc(100% - 17px);
 }

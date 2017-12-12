@@ -33,7 +33,8 @@ strong {
     font-family: 'Lato-Black', sans-serif;
     color: #810000;
 }
-#special_abilities strong, #actions strong {
+#special_abilities strong, #actions strong,
+#legendary_actions strong {
     color: initial;
 }
 

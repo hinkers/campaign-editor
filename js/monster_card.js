@@ -1,11 +1,6 @@
 // On document ready
 $(function() {
 
-    // TODO: Remove me
-    $('#head #name').click(function() {
-        location.reload();
-    });
-
     // Function for working out stat modifiers
     var modifier = function(stat) {
         n = Math.floor(stat / 2) - 5;
@@ -53,8 +48,14 @@ $(function() {
 
     // Get json file
     $.getJSON("assets/dnd/5e-SRD-Monsters.json", function(json) {
-        //var monster = json[Math.floor(Math.random() * json.length)];
-        var monster = json[8];
+
+        // Get requested monster
+        var monster;
+        var ipcRenderer = require('electron').ipcRenderer;
+        ipcRenderer.on('monsterNumber', function (monsterNumber) {
+            monster = json[monsterNumber];
+        });
+
         console.log(monster);
 
         // Title
@@ -262,10 +263,10 @@ $(function() {
                     });
                 }
 
-                $('#actions').append(actionContainer);
+                $('#legendary_actions').append(actionContainer);
             });
         }
-        $('#actions #actions_clone').remove();
+        $('#legendary_actions #legendary_actions_clone').remove();
 
 
         // Collapse or expand actions
@@ -299,7 +300,6 @@ $(function() {
 
         // Fix width if there is a scrollbar
         if ($("body").height() > $(window).height()) {
-            console.log(require('electron').remote.getCurrentWindow());
             require('electron').remote.getCurrentWindow().setSize(383, 515);
         }
 
