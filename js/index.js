@@ -29,7 +29,8 @@ $(function () {
 			fullscreenable: false
 		});
 
-		win.webContents.send('monsterNumber', 8);
+		// Send monster number to be shown
+		win.monsterNumber = 8;
 
 		win.webContents.on('did-finish-load', () => {
 			win.setMenu(null);

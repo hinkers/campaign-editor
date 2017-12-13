@@ -1,3 +1,7 @@
+// Get current window (to receive passed variables)
+var electron = require('electron');
+var currentWindow = electron.remote.getCurrentWindow();
+
 // On document ready
 $(function() {
 
@@ -53,7 +57,7 @@ $(function() {
         var monster;
         var ipcRenderer = require('electron').ipcRenderer;
         ipcRenderer.on('monsterNumber', function (monsterNumber) {
-            monster = json[monsterNumber];
+            monster = json[currentWindow.monsterNumber];
         });
 
         console.log(monster);
