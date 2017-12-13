@@ -24,8 +24,17 @@ body {
     position: fixed;
 }
 #sidebar-buttons {
+    display: block;
+    float: left;
     margin-top: 15px;
     width: 50px;
+}
+#sidebar-container {
+    display: block;
+    float: right;
+    background-color: red;
+    width: 150px;
+    resize: horizontal;
 }
 .sidebar-button {
     margin: 10px 0;

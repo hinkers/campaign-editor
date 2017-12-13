@@ -1,6 +1,9 @@
 // On document ready
 $(function () {
 
+	// Sidebar
+	$('#sidebar-container').hide();
+
 	// Tabs
 	$('#tabs').tabs({
 		active: 0
@@ -13,6 +16,12 @@ $(function () {
 		});
 		$('#markdown-wrapper').toggle();
 		$('#editor-wrapper').toggle();
+	});
+
+	// Sidebar test
+	$('#files-button').click(function() {
+		$('#sidebar-container').toggle();
+		$('#tabs').css('margin-left', $('#sidebar-wrapper').css('width'));
 	});
 
 	// Monsters test
