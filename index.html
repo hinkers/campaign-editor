@@ -1,73 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <title>DnD Campaign Editor</title>
+	<head>
+		<meta charset="UTF-8">
+		<title>DnD Campaign Editor</title>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+		<!-- Fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
 
-        <!-- Stylesheets -->
-        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-        <link rel="stylesheet" href="css/main.css">
+		<!-- Stylesheets -->
+		<link rel="stylesheet" href="css/main.css">
 
-        <!-- Javascript -->
-        <script defer src="assets/fontawesome/js/fontawesome-all.min.js"></script>
-        <script src="js/require.js"></script>
+		<!-- Insert this line above script imports  -->
+<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
 
-        <!-- TODO: Work out how to actually import this -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
-        <script src="assets/ace/src-min/ace.js"></script>
-        <script src="js/index.js"></script>
-    </head>
+		<!-- Javascript -->
+		<script defer src="assets/fontawesome/js/fontawesome-all.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <body>
+		<script src="assets/ace/src-min/ace.js"></script>
+		<script src="js/index.js"></script>
 
-        <div id="body-wrapper">
+		<!-- Insert this line after script imports -->
+<script>if (window.module) module = window.module;</script>
+	</head>
 
-            <div id="sidebar-wrapper">
-                <div id="sidebar">
-                    <div id="sidebar-buttons">
-                        <div id="files-button" class="sidebar-button" title="Files"><i class="fas fa-file-alt"></i></div>
-                        <div class="sidebar-button" title="Search"><i class="fas fa-search"></i></div>
-                        <div id="monsters-button" class="sidebar-button" title="NPCs &amp; Monsters"><i class="fab fa-optin-monster"></i></div>
-                    </div>
-                    <div id="sidebar-container">
-                        <p>Hello World</p>
-                    </div>
-                </div>
-            </div>
+	<body>
 
-            <div id="tabs">
-                <ul>
-                    <li><a href="#tab-1">Tab 1</a></li>
-                    <li><a href="#tab-2">Tab 2</a></li>
-                    <li><a href="#tab-3">Tab 3</a></li>
-                </ul>
-                <div id="tab-1">
-                    <div id="markdown-toggle">
-                        <i class="fas fa-eye preview"></i>
-                        <i class="fas fa-eye-slash preview" style="display:none;"></i>
-                    </div>
-                    <div id="markdown-wrapper">
-                        <div id="markdown">#Markdown</div>
-                    </div>
-                    <div id="editor-wrapper">
-                        <div id="editor"></div>
-                    </div>
-                </div>
-                <div id="tab-2">
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                </div>
-                <div id="tab-3">
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                </div>
-            </div>
+		<div id="sidebar">
+			<ul id="icons">
+				<li data-mode="edit"><i class="fas fa-eye"></i></li>
 
-        </div>
+				<li data-name="files"><i class="fas fa-file-alt"></i></li>
+				<li data-name="players"><i class="fas fa-user"></i></li>
+				<li data-name="npcs"><i class="fas fa-desktop"></i></li>
+				<li data-name="enemies"><i class="fab fa-optin-monster"></i></li>
+			</ul>
+			<div id="sidebar-content"></div>
+		</div>
 
-    </body>
+		<div id="editor"></div>
+
+	</body>
 
 </html>

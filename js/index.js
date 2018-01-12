@@ -1,27 +1,90 @@
 // On document ready
-$(function () {
+function w3_open() {
+	document.getElementById("main").style.marginLeft = "25%";
+	document.getElementById("mySidebar").style.width = "25%";
+	document.getElementById("mySidebar").style.display = "block";
+	document.getElementById("openNav").style.display = 'none';
+}
+function w3_close() {
+	document.getElementById("main").style.marginLeft = "0%";
+	document.getElementById("mySidebar").style.display = "none";
+	document.getElementById("openNav").style.display = "inline-block";
+}
 
-	// Sidebar
-	$('#sidebar-container').hide();
+// Intial vars
+var sidebarOpen = 250;
+var sidebarClosed = 50;
+var sidebarWidth = sidebarOpen;
 
-	// Tabs
-	$('#tabs').tabs({
-		active: 0
+var currentIcon = 'files';
+
+// Editor re-size
+function editorResize() {
+	$('#sidebar').width(sidebarWidth);
+	$('#editor').css('left', sidebarWidth);
+	$('#editor').width($(window).width() - sidebarWidth);
+	$('#editor').height($(window).height());
+}
+
+// Sidebar toggle
+function sidebarToggle() {
+	if (sidebarWidth == sidebarOpen) {
+		sidebarWidth = sidebarClosed;
+	} else {
+		sidebarWidth = sidebarOpen;
+	}
+	editorResize();
+}
+
+// Update sidebar
+function updateSidebar() {
+	console.log('pass');
+}
+
+// On document ready
+$(() => {
+
+	// Editor size
+	editorResize();
+	$(window).resize(() => {
+		editorResize();
 	});
 
-	// Eyes
-	$('#markdown-toggle').click(function() {
-		$(this).children('.preview').each(function() {
-			$(this).toggle();
-		});
-		$('#markdown-wrapper').toggle();
-		$('#editor-wrapper').toggle();
+	// Preview toggle
+	$('#icons li:not([data-name])').click(function(event) {
+		// Get clicked li
+		sender = $(event.currentTarget);
+
+		// Icons
+		viewIcon = '<i class="fas fa-eye"></i>';
+		editIcon = '<i class="fas fa-pencil-alt"></i>';
+
+		if (sender.data('mode') == 'edit') {
+			sender.html(editIcon);
+			sender.data('mode', 'preview');
+		} else if (sender.data('mode') == 'preview') {
+			sender.html(viewIcon);
+			sender.data('mode', 'edit');
+		}
 	});
 
-	// Sidebar test
-	$('#files-button').click(function() {
-		$('#sidebar-container').toggle();
-		$('#tabs').css('margin-left', $('#sidebar-wrapper').css('width'));
+	// Sidebar change
+	$('#icons li[data-name]').click(function(event) {
+		// Get clicked li
+		sender = event.currentTarget;
+
+		// Determine outcome
+		if ($(sender).data('name') == currentIcon) {
+			sidebarToggle();
+			currentIcon = false;
+		} else if (currentIcon === false) {
+			sidebarToggle();
+			currentIcon = $(sender).data('name');
+	 	} else {
+			currentIcon = $(sender).data('name');
+		}
+
+		updateSidebar();
 	});
 
 	// Monsters test
