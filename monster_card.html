@@ -1,167 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <title>Monster Card</title>
+	<head>
+		<meta charset="UTF-8">
+		<title>Monster Card</title>
 
-        <link rel="stylesheet" href="css/monster_card.css">
+		<link rel="stylesheet" href="css/scrollbar.css">
+		<link rel="stylesheet" href="css/monster_card.css">
 
-        <script defer src="assets/fontawesome/js/fontawesome-all.min.js"></script>
-        <script src="js/require.js"></script>
-        <script src="js/monster_card.js"></script>
-    </head>
+		<script defer src="assets/fontawesome/js/fontawesome-all.min.js"></script>
 
-    <body>
+		<script src="js/monster_card.js"></script>
+	</head>
 
-        <div id="card">
+	<body>
 
-            <div id="head">
-                <h1 id="name"></h1>
-                <em id="">
-                    <small id="size"></small>
-                    <small id="type"></small>
-                    <small id="subtype"></small>,
-                    <small id="alignment"></small>
-                </em>
-                <hr>
-            </div>
+		<div id="card">
 
-            <div id="combat-stats">
-                <p>
-                    <strong>Armor Class:</strong>
-                    <span id="armor_class"></span>
-                </p>
-                <p>
-                    <strong>Hit Points:</strong>
-                    <span id="hit_points"></span>
-                    (<span id="hit_dice"></span>)
-                </p>
-                <p>
-                    <strong>Speed:</strong>
-                    <span id="speed"></span>
-                </p>
-                <hr>
-            </div>
+			<div id="head">
+				<h1 id="name"></h1>
+				<em id="">
+					<small id="size"></small>
+					<small id="type"></small>
+					<small id="subtype"></small>,
+					<small id="alignment"></small>
+				</em>
+				<hr>
+			</div>
 
-            <div id="raw-stats">
-                <span class="stat-block">
-                    <strong>STR</strong>
-                    <small id="strength"></small>
-                    <small id="strength_mod"></small>
-                </span>
-                <span class="stat-block">
-                    <strong>DEX</strong>
-                    <small id="dexterity"></small>
-                    <small id="dexterity_mod"></small>
-                </span>
-                <span class="stat-block">
-                    <strong>CON</strong>
-                    <small id="constitution"></small>
-                    <small id="constitution_mod"></small>
-                </span>
-                <span class="stat-block">
-                    <strong>INT</strong>
-                    <small id="intelligence"></small>
-                    <small id="intelligence_mod"></small>
-                </span>
-                <span class="stat-block">
-                    <strong>WIS</strong>
-                    <small id="wisdom"></small>
-                    <small id="wisdom_mod"></small>
-                </span>
-                <span class="stat-block">
-                    <strong>CHA</strong>
-                    <small id="charisma"></small>
-                    <small id="charisma_mod"></small>
-                </span>
-                <hr>
-            </div>
+			<div id="combat-stats">
+				<p>
+					<strong>Armor Class:</strong>
+					<span id="armor_class"></span>
+				</p>
+				<p>
+					<strong>Hit Points:</strong>
+					<span id="hit_points"></span>
+					(<span id="hit_dice"></span>)
+				</p>
+				<p>
+					<strong>Speed:</strong>
+					<span id="speed"></span>
+				</p>
+				<hr>
+			</div>
 
-            <div id="traits">
-                <p>
-                    <strong>Saving Throws:</strong>
-                    <span id="saving_throws"></span>
-                </p>
-                <p>
-                    <strong>Skills:</strong>
-                    <span id="skills"></span>
-                </p>
-                <p>
-                    <strong>Damage Immunities:</strong>
-                    <span id="damage_immunities"></span>
-                </p>
-                <p>
-                    <strong>Damage Resistances:</strong>
-                    <span id="damage_resistances"></span>
-                </p>
-                <p>
-                    <strong>Damage Vulnerabilities:</strong>
-                    <span id="damage_vulnerabilities"></span>
-                </p>
-                <p>
-                    <strong>Condition Immunities:</strong>
-                    <span id="condition_immunities"></span>
-                </p>
-                <p>
-                    <strong>Senses:</strong>
-                    <span id="senses"></span>
-                </p>
-                <p>
-                    <strong>Languages:</strong>
-                    <span id="languages"></span>
-                </p>
-                <p>
-                    <strong>Challenge:</strong>
-                    <span id="challenge_rating"></span>
-                </p>
-            </div>
-            <hr>
+			<div id="raw-stats">
+				<span class="stat-block">
+					<strong>STR</strong>
+					<small id="strength"></small>
+					<small id="strength_mod"></small>
+				</span>
+				<span class="stat-block">
+					<strong>DEX</strong>
+					<small id="dexterity"></small>
+					<small id="dexterity_mod"></small>
+				</span>
+				<span class="stat-block">
+					<strong>CON</strong>
+					<small id="constitution"></small>
+					<small id="constitution_mod"></small>
+				</span>
+				<span class="stat-block">
+					<strong>INT</strong>
+					<small id="intelligence"></small>
+					<small id="intelligence_mod"></small>
+				</span>
+				<span class="stat-block">
+					<strong>WIS</strong>
+					<small id="wisdom"></small>
+					<small id="wisdom_mod"></small>
+				</span>
+				<span class="stat-block">
+					<strong>CHA</strong>
+					<small id="charisma"></small>
+					<small id="charisma_mod"></small>
+				</span>
+				<hr>
+			</div>
 
-            <div id="special_abilities">
-                <div id="special_abilities_clone">
-                    <i class="fas fa-caret-right action_toggle closed"></i>
-                    <i class="fal fa-caret-down action_toggle open"></i>
-                    <strong class="action_toggle"></strong>
-                    <p></p>
-                </div>
-            </div>
+			<div id="traits">
+				<p>
+					<strong>Saving Throws:</strong>
+					<span id="saving_throws"></span>
+				</p>
+				<p>
+					<strong>Skills:</strong>
+					<span id="skills"></span>
+				</p>
+				<p>
+					<strong>Damage Immunities:</strong>
+					<span id="damage_immunities"></span>
+				</p>
+				<p>
+					<strong>Damage Resistances:</strong>
+					<span id="damage_resistances"></span>
+				</p>
+				<p>
+					<strong>Damage Vulnerabilities:</strong>
+					<span id="damage_vulnerabilities"></span>
+				</p>
+				<p>
+					<strong>Condition Immunities:</strong>
+					<span id="condition_immunities"></span>
+				</p>
+				<p>
+					<strong>Senses:</strong>
+					<span id="senses"></span>
+				</p>
+				<p>
+					<strong>Languages:</strong>
+					<span id="languages"></span>
+				</p>
+				<p>
+					<strong>Challenge:</strong>
+					<span id="challenge_rating"></span>
+				</p>
+			</div>
+			<hr>
 
-            <div id="actions">
-                <div>
-                    <h2>Actions</h2>
-                    <hr>
-                </div>
-                <div id="actions_clone">
-                    <i class="fas fa-caret-right action_toggle closed"></i>
-                    <i class="fal fa-caret-down action_toggle open"></i>
-                    <strong class="action_toggle"></strong><br>
-                    <strong class="roll_dice">Attack:</strong>
-                    <span class="attack roll_dice"></span><br>
-                    <strong class="roll_dice">Damage:</strong>
-                    <span class="damage roll_dice"></span>
-                    <p></p>
-                </div>
-            </div>
+			<div id="special_abilities">
+				<div id="special_abilities_clone">
+					<i class="fas fa-caret-right action_toggle closed"></i>
+					<i class="fal fa-caret-down action_toggle open"></i>
+					<strong class="action_toggle"></strong>
+					<p></p>
+				</div>
+			</div>
 
-            <div id="legendary_actions">
-                <div>
-                    <h2>Legendary Actions</h2>
-                    <hr>
-                </div>
-                <div id="legendary_actions_clone">
-                    <i class="fas fa-caret-right action_toggle closed"></i>
-                    <i class="fal fa-caret-down action_toggle open"></i>
-                    <strong class="action_toggle"></strong><br>
-                    <strong class="roll_dice">Attack:</strong>
-                    <span class="attack roll_dice"></span><br>
-                    <strong class="roll_dice">Damage:</strong>
-                    <span class="damage roll_dice"></span>
-                    <p></p>
-                </div>
-            </div>
-        </div>
+			<div id="actions">
+				<div>
+					<h2>Actions</h2>
+					<hr>
+				</div>
+				<div id="actions_clone">
+					<i class="fas fa-caret-right action_toggle closed"></i>
+					<i class="fal fa-caret-down action_toggle open"></i>
+					<strong class="action_toggle"></strong><br>
+					<strong class="roll_dice">Attack:</strong>
+					<span class="attack roll_dice"></span><br>
+					<strong class="roll_dice">Damage:</strong>
+					<span class="damage roll_dice"></span>
+					<p></p>
+				</div>
+			</div>
 
-    </body>
+			<div id="legendary_actions">
+				<div>
+					<h2>Legendary Actions</h2>
+					<hr>
+				</div>
+				<div id="legendary_actions_clone">
+					<i class="fas fa-caret-right action_toggle closed"></i>
+					<i class="fal fa-caret-down action_toggle open"></i>
+					<strong class="action_toggle"></strong><br>
+					<strong class="roll_dice">Attack:</strong>
+					<span class="attack roll_dice"></span><br>
+					<strong class="roll_dice">Damage:</strong>
+					<span class="damage roll_dice"></span>
+					<p></p>
+				</div>
+			</div>
+		</div>
+
+	</body>
 
 </html>

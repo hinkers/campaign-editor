@@ -1,70 +1,69 @@
 @import url('https://fonts.googleapis.com/css?family=Lato|Roboto+Slab');
-@import url('https://fonts.googleapis.com/css?family=Lato|Roboto+Slab');
 
 body {
-    background-image: url("../images/parchment.jpg");
-    background-repeat: no-repeat;
-    background-position: right top;
-    background-attachment: fixed;
-    font-family: 'Lato', sans-serif;
-    font-size: small;
+	background-image: url("../images/parchment-card.jpg");
+	background-repeat: no-repeat;
+	background-position: right top;
+	background-attachment: fixed;
+	font-family: 'Lato', sans-serif;
+	font-size: small;
 }
 
 h1, h2, p {
-    padding: 0;
-    margin: 0;
+	padding: 0;
+	margin: 0;
 }
 
 h1, h2 {
-    font-family: 'Roboto Slab', serif;
-    color: #810000;
+	font-family: 'Roboto Slab', serif;
+	color: #810000;
 }
 
 h2 {
-    padding-top: 5px;
+	padding-top: 5px;
 }
 
 img {
-    width: 12px;
-    height: 12px;
+	width: 12px;
+	height: 12px;
 }
 
 strong {
-    font-family: 'Lato-Black', sans-serif;
-    color: #810000;
+	font-family: 'Lato-Black', sans-serif;
+	color: #810000;
 }
 #special_abilities strong, #actions strong,
 #legendary_actions strong {
-    color: initial;
+	color: initial;
 }
 
 #actions strong.roll_dice {
-    color: #810000;
+	color: #810000;
 }
 
 .stat-block {
-    width: 13.6%;
-    float: left;
-    text-align: center;
-    margin-left: 8px;
-    margin-bottom: 8px;
+	width: 13.6%;
+	float: left;
+	text-align: center;
+	margin-left: 8px;
+	margin-bottom: 8px;
 }
 .stat-block strong {
-    width: 100%;
-    display: block;
+	width: 100%;
+	display: block;
 }
 
 .roll_dice, .action_toggle {
-    cursor: pointer;
+	cursor: pointer;
 }
 #actions strong.roll_dice:hover,
 #actions strong.action_toggle:hover,
 #special_abilities strong.action_toggle:hover {
-    color: #862626;
+	color: #862626;
 }
 
 hr {
-    border: #8f0f0f 1px solid;
-    width: 344px;
-    clear: both;
+	border: #8f0f0f 1px solid;
+	width: 344px;
+	clear: both;
 }

@@ -1,17 +1,10 @@
-// On document ready
-function w3_open() {
-	document.getElementById("main").style.marginLeft = "25%";
-	document.getElementById("mySidebar").style.width = "25%";
-	document.getElementById("mySidebar").style.display = "block";
-	document.getElementById("openNav").style.display = 'none';
-}
-function w3_close() {
-	document.getElementById("main").style.marginLeft = "0%";
-	document.getElementById("mySidebar").style.display = "none";
-	document.getElementById("openNav").style.display = "inline-block";
-}
-
 // Intial vars
+var editor;
+var position = {
+	row: 0,
+	column: 0
+};
+
 var sidebarOpen = 250;
 var sidebarClosed = 50;
 var sidebarWidth = sidebarOpen;
@@ -21,9 +14,9 @@ var currentIcon = 'files';
 // Editor re-size
 function editorResize() {
 	$('#sidebar').width(sidebarWidth);
-	$('#editor').css('left', sidebarWidth);
-	$('#editor').width($(window).width() - sidebarWidth);
-	$('#editor').height($(window).height());
+	$('#editor, #preview').css('left', sidebarWidth);
+	$('#editor, #preview').width($(window).width() - sidebarWidth);
+	$('#editor, #preview').height($(window).height());
 }
 
 // Sidebar toggle
@@ -36,13 +29,77 @@ function sidebarToggle() {
 	editorResize();
 }
 
+// Function to update the markdown on the preview
+function updatePreview() {
+	var converter = new showdown.Converter();
+	var markdown = converter.makeHtml(editor.getValue());
+	$('#preview').html(markdown);
+}
+
 // Update sidebar
 function updateSidebar() {
-	console.log('pass');
+	// Unselect previously selected icon
+	$('li.selected').removeClass('selected');
+
+	// If the sidebar is open
+	if (currentIcon) {
+		$('#sidebar-content').show();
+
+		// Select new icon
+		$('li[data-name=' + currentIcon + ']').addClass('selected');
+
+		// Clear current content
+		$('#sidebar-content').html('');
+
+		// Do different things based on what is selected
+		switch (currentIcon) {
+			case 'files':
+				break;
+
+			case 'players':
+				break;
+
+			case 'npcs':
+				break;
+
+			case 'enemies':
+				$.getJSON("assets/dnd/5e-SRD-Monsters.json", function(monsters) {
+					var mons = [];
+					$.each(monsters, function(index, monster) {
+						var mon = listItem('fas fa-file-alt', monster['name']);
+						mons.push(mon);
+					});
+
+					var list = '<ul>';
+					$.each(mons, function(index, mon) {
+						console.log(mon.name);
+						list += mon.draw();
+					});
+					list += '</ul>';
+					$('#sidebar-content').html(list);
+				});
+				break;
+		}
+	} else {
+		$('#sidebar-content').hide();
+	}
+}
+
+// Slide toggle between two elements
+function slideBetween(oldDOM, newDOM) {
+	$(newDOM).show();
+	$(oldDOM).hide();
+	// $(newDOM).show();
+	// $(newDOM).animate({'left': '+=' + $(newDOM).width() / 2}, 'slow');
+	// $(oldDOM).animate({'left': '-=' + $(newDOM).width() / 2}, 'slow');
+	// $(oldDOM).hide()
 }
 
 // On document ready
 $(() => {
+
+	// Hide markdown preview on startup
+	$('#preview').hide();
 
 	// Editor size
 	editorResize();
@@ -62,9 +119,15 @@ $(() => {
 		if (sender.data('mode') == 'edit') {
 			sender.html(editIcon);
 			sender.data('mode', 'preview');
+			slideBetween('#editor', '#preview');
+			updatePreview();
+			position = editor.getCursorPosition();
 		} else if (sender.data('mode') == 'preview') {
 			sender.html(viewIcon);
 			sender.data('mode', 'edit');
+			slideBetween('#preview', '#editor');
+			editor.focus();
+			editor.gotoLine(position.row, position.column);
 		}
 	});
 
@@ -122,7 +185,7 @@ $(() => {
 
 
 	// Ace editor
-	var editor = ace.edit("editor");
+	editor = ace.edit("editor");
 	editor.setTheme("ace/theme/monokai");
 	editor.getSession().setMode("ace/mode/markdown");
 	editor.getSession().setUseWrapMode(true);
